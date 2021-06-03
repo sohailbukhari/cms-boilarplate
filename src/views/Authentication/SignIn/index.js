@@ -3,8 +3,16 @@ import { NavLink } from 'react-router-dom';
 
 import 'assets/scss/style.scss';
 import Aux from 'hoc/_Aux';
+import { useCore } from 'hooks/useCore';
 
-const SignUp = () => {
+const SignIn = (props) => {
+  const core = useCore();
+
+  const handleLogin = () => {
+    core.login();
+    props.history.push('/');
+  };
+
   return (
     <Aux>
       <div className='auth-wrapper'>
@@ -22,21 +30,23 @@ const SignUp = () => {
               </div>
               <h3 className='mb-4'>Login</h3>
               <div className='input-group mb-3'>
-                <input type='email' className='form-control' placeholder='Email' />
+                <input type='email' className='form-control' placeholder='Email' value='admin@sohailbukhari.com' />
               </div>
               <div className='input-group mb-4'>
-                <input type='password' className='form-control' placeholder='password' />
+                <input type='password' className='form-control' placeholder='password' value='admin' />
               </div>
               <div className='form-group text-left'>
                 <div className='checkbox checkbox-fill d-inline'>
-                  <input type='checkbox' name='checkbox-fill-1' id='checkbox-fill-a1' />
+                  <input type='checkbox' checked={true} name='checkbox-fill-1' id='checkbox-fill-a1' />
                   <label htmlFor='checkbox-fill-a1' className='cr'>
                     {' '}
                     Save credentials
                   </label>
                 </div>
               </div>
-              <button className='btn btn-primary shadow-2 mb-4'>Login</button>
+              <button className='btn btn-primary shadow-2 mb-4' onClick={handleLogin}>
+                Login
+              </button>
               <p className='mb-2 text-muted'>
                 Forgot password? <NavLink to='/reset-password'>Reset</NavLink>
               </p>
@@ -51,4 +61,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default SignIn;

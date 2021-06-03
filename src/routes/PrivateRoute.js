@@ -1,14 +1,15 @@
+import { useCore } from 'hooks/useCore';
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
 const PrivateRoute = ({ children, ...rest }) => {
-  const isLoggedIn = true;
+  const { data } = useCore();
 
   return (
     <Route
       {...rest}
       render={({ location }) =>
-        isLoggedIn ? (
+        data.isLoggedIn ? (
           children
         ) : (
           <Redirect

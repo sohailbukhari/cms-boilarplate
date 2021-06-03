@@ -8,14 +8,17 @@ import App from './App/index';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
 import config from './config';
+import { CoreProvider } from 'hooks/useCore';
 
 const store = createStore(reducer);
 
 const app = (
   <Provider store={store}>
-    <BrowserRouter basename={config.basename}>
-      <App />
-    </BrowserRouter>
+    <CoreProvider>
+      <BrowserRouter basename={config.basename}>
+        <App />
+      </BrowserRouter>
+    </CoreProvider>
   </Provider>
 );
 
