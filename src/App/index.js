@@ -8,6 +8,7 @@ import Loader from './layout/Loader';
 import Aux from '../hoc/_Aux';
 import ScrollToTop from './layout/ScrollToTop';
 import routes from '../route';
+import PrivateRoute from 'routes/PrivateRoute';
 
 const AdminLayout = Loadable({
   loader: () => import('./layout/AdminLayout'),
@@ -25,7 +26,10 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <Switch>
             {menu}
-            <Route path='/' component={AdminLayout} />
+
+            <PrivateRoute>
+              <Route path='/' component={AdminLayout} />
+            </PrivateRoute>
           </Switch>
         </Suspense>
       </ScrollToTop>
