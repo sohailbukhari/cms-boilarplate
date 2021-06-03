@@ -26,7 +26,6 @@ const App = () => {
         <Suspense fallback={<Loader />}>
           <Switch>
             {menu}
-
             <PrivateRoute>
               <Route path='/' component={AdminLayout} />
             </PrivateRoute>

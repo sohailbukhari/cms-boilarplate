@@ -57,6 +57,7 @@ class AdminLayout extends Component {
                       <Suspense fallback={<Loader />}>
                         <Switch>
                           {menu}
+                          {/* <Route path='*' name='404' render={(props) => <SamplePage />} /> */}
                           <Redirect from='/' to={this.props.defaultPath} />
                         </Switch>
                       </Suspense>
